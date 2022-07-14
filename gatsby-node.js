@@ -18,20 +18,20 @@ const createContentfulPages = async ({ createPage, graphql }) => {
   `)
   console.log("The query for pages is: ", result)
 
-  if (result.errors) {
+  if (result.data.pages.length === 0 || result.errors) {
     console.log("No pages found")
   }
 
   const nodes = result.data.pages.nodes || []
 
-  nodes.forEach(node => {
+  nodes.forEach(({ id, node_locale, title, slug }) => {
     createPage({
-      path: `/${node.slug}`,
+      path: `/${slug}`,
       component: CONTENTFUL_PAGE_TEMPLATE,
       context: {
-        id: node.id,
-        locale: node.node_locale,
-        title: node.title,
+        id: id,
+        locale: node_locale,
+        title: title,
       },
     })
   })
