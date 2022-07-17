@@ -2,6 +2,7 @@ const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 const CONTENTFUL_PAGE_TEMPLATE = path.resolve("./src/templates/contentful.js")
+const DSG_PAGE_TEMPLATE = path.resolve("./src/templates/using-dsg.js")
 
 const createContentfulPages = async ({ createPage, graphql }) => {
   const result = await graphql(`
@@ -16,7 +17,6 @@ const createContentfulPages = async ({ createPage, graphql }) => {
       }
     }
   `)
-  console.log("The query for pages is: ", result)
 
   if (result.data.pages.length === 0 || result.errors) {
     console.log("No pages found")
@@ -37,7 +37,22 @@ const createContentfulPages = async ({ createPage, graphql }) => {
   })
 }
 
-const createDMG = async ({ createPage, graphql }) => {}
+const createDMG = async ({ createPage, graphql }) => {
+  console.log(graphql)
+  const slug = "/dmg"
+
+  // you could easily create any page based on the provided slug
+
+  createPage({
+    path: slug,
+    component: DSG_PAGE_TEMPLATE,
+    context: {
+      id: "dmg",
+      locale: "en-US",
+      title: "DMG",
+    },
+  })
+}
 
 // creates multiple templates
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
