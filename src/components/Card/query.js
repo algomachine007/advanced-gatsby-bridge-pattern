@@ -3,32 +3,33 @@ import { graphql } from "gatsby"
 export const query = graphql`
   fragment FragmentBlog on ContentfulBlogs {
     __typename
-    id
-    # name
-    # label
-    title
-
-    # author {
-    #   id
-    #   blogs {
-    #     body {
-    #       references {
-    #         title
-    #         url
-    #       }
-    #     }
-    #   }
-    # }
-
     author {
-      avatar {
-        gatsbyImageData(layout: FULL_WIDTH)
-      }
+      name
+      node_locale
       blogs {
+        title
+        slug
         body {
+          references {
+            description
+            gatsbyImage(width: 400)
+          }
           raw
+        }
+        coverImages {
+          gatsbyImage(width: 400)
+        }
+        author {
+          blogs {
+            id
+          }
+          avatar {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
         }
       }
     }
+    title
+    variant
   }
 `

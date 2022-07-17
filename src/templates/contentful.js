@@ -20,38 +20,12 @@ export const ContentfulPageQuery = graphql`
       title
       id
       slug
-      # sections {
-      #   id
-      #   author {
-      #     id
-      #     blogs {
-      #       body {
-      #         references {
-      #           title
-      #           url
-      #         }
-      #       }
-      #     }
-      #   }
-      # }
+
       sections {
         ... on ContentfulBlogs {
           ...FragmentBlog
         }
       }
-
-      # sections {
-      #   author {
-      #     avatar {
-      #       gatsbyImageData(layout: FULL_WIDTH)
-      #     }
-      #     blogs {
-      #       body {
-      #         raw
-      #       }
-      #     }
-      #   }
-      # }
     }
   }
 `
