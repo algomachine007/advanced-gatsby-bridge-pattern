@@ -8,7 +8,7 @@ const ContentfulPageTemplate = ({ data, pageContext, ...rest }) => {
   console.log("section", data)
   console.log("pageContext", pageContext)
   console.log("rest props", rest)
-  return <main>{data && data.sections?.map(getContentfulBodySection)}</main>
+  return <main>{data && data.page.sections.map(getContentfulBodySection)}</main>
 }
 
 export default ContentfulPageTemplate

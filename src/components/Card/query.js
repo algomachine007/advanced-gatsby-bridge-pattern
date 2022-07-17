@@ -1,21 +1,32 @@
 import { graphql } from "gatsby"
 
 export const query = graphql`
-  fragment FragmentBlogs on ContentfulBlogs {
+  fragment FragmentBlog on ContentfulBlogs {
     __typename
     id
-    name
-    label
+    # name
+    # label
     title
 
+    # author {
+    #   id
+    #   blogs {
+    #     body {
+    #       references {
+    #         title
+    #         url
+    #       }
+    #     }
+    #   }
+    # }
+
     author {
-      id
+      avatar {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
       blogs {
         body {
-          references {
-            title
-            url
-          }
+          raw
         }
       }
     }
