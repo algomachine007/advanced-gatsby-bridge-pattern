@@ -5,9 +5,6 @@ import React, { useEffect } from "react"
 import { getContentfulBodySection } from "../base/getContentfulBody"
 
 const ContentfulPageTemplate = ({ data, pageContext, ...rest }) => {
-  console.log("section", data)
-  console.log("pageContext", pageContext)
-  console.log("rest props", rest)
   return <main>{data && data.page.sections.map(getContentfulBodySection)}</main>
 }
 

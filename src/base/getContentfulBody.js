@@ -7,7 +7,6 @@ const body = {
 }
 
 export const getContentfulBodySection = ({ id, ...props }) => {
-  console.log("contentful template", props)
   const { __typename } = props
   const Section = body[__typename] || <p>Section Not Found</p>
 
