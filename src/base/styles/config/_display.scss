@@ -1,0 +1,63 @@
+// utility classes for displaying content
+
+// custom name
+.d-none {
+  // actual property
+  display: none;
+}
+
+.d {
+  // actual property
+  display: block;
+}
+
+@media #{$xsmall-and-up} {
+  .d-none\-xs {
+    display: none;
+  }
+
+  .d\-xs {
+    display: block;
+  }
+}
+
+@media #{$small-and-up} {
+  .d-none\-sm {
+    display: none;
+  }
+  .d\-sm {
+    display: block;
+  }
+}
+
+@media #{$tablet-and-up} {
+  .d-none\-md {
+    display: none;
+  }
+
+  .d\-md {
+    display: block;
+  }
+}
+
+@media #{$large-and-up} {
+  .d-none\-lg {
+    display: none;
+  }
+
+  .d\-lg {
+    display: block;
+  }
+}
+
+@media #{$ultra-and-up} {
+  .d-none\-xl {
+    display: none;
+  }
+
+  .d\-xl {
+    display: block;
+  }
+}
+
+//Usage: "d-none-sm"

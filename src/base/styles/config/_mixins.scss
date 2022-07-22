@@ -1,0 +1,67 @@
+@mixin fontIcon {
+  font-family: "Font Awesome 5 Pro Light" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin cardWrapper {
+  width: 100%;
+  box-shadow: $box-shadow-primary;
+  padding: 40px;
+  text-align: center;
+  background-color: $white;
+  border-radius: $border-radius-sm;
+
+  @media #{$large-and-up} {
+    padding: 90px 200px;
+  }
+}
+
+@mixin primaryAnimation {
+  transform: scale3d(1.2, 1.2, 1);
+  transition: 0.3s ease-in;
+}
+
+@mixin sectionWrapper {
+  padding: 30px 0;
+
+  @media #{$small-and-up} {
+    padding: 45px 0;
+  }
+}
+
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $size == tablet-landscape-up {
+    @media (min-width: 900px) {
+      @content;
+    }
+  }
+}
+
+// looping through the breakpoints to generate the media utilities
+
+$breakpoints: (
+  "xs": 480px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1400px,
+);
+
+@mixin loop-mq {
+  @content;
+  @each $key, $value in $breakpoints {
+    @media (min-width: #{$value}) {
+      &\@#{$key} {
+        @content;
+      }
+    }
+  }
+}

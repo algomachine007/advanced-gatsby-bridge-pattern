@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "eslint-import-resolver-alias": "^1.1.2",
     "gatsby": "^4.18.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-gatsby-cloud": "^4.18.0",
     "gatsby-plugin-image": "^2.18.1",
     "gatsby-plugin-manifest": "^4.18.0",
@@ -24,6 +26,7 @@
     "sass": "^1.53.0"
   },
   "devDependencies": {
+    "gatsby-plugin-root-import": "^2.0.8",
     "prettier": "^2.7.1"
   },
   "keywords": [

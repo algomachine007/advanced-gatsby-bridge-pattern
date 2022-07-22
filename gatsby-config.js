@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const path = require("path")
+
 module.exports = {
   siteMetadata: {
     title: `Bridge Pattern With Gatsby`,
@@ -59,6 +61,28 @@ module.exports = {
         },
       },
     },
+
+    // {
+    //   resolve: "gatsby-plugin-root-import",
+    //   options: {
+    //     resolveModules: [path.join(__dirname, "libs")],
+    //     utils: path.join(__dirname, "src", "components", "utilities"),
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-alias-imports`,
+    //   options: {
+    //     alias: {
+    //       "@": path.resolve(
+    //         __dirname,
+    //         "src/components",
+    //         "src/assets",
+    //         "src/assets/fonts"
+    //       ),
+    //     },
+    //     extensions: [],
+    //   },
+    // },
     `gatsby-plugin-image`,
   ],
 }

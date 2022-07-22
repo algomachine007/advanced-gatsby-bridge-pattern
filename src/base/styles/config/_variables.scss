@@ -1,0 +1,89 @@
+// creating a design system
+
+$gray-dark: #2d2d2d;
+$gray-dark2: #333;
+$gray: #727272;
+$gray-light: #eaeaea;
+$gray-light1: #c7c7c7;
+$gray-light2: #979797;
+$gray-light3: #d3d3d3;
+$gray-light4: #afafaf;
+$blue-light: #1381d7;
+$blue-dark: #006585;
+$blue-dark-2: #0a6aa4;
+$blue-dark-3: #1f8de4;
+$dark-pink: #b22e74;
+$red: #c52c4e;
+$white: #fff;
+$white30: rgba(255, 255, 255, 0.3);
+$purple-dark: #1b0d30;
+$purple-dark2: #1b0624;
+$yellow: #ffcb05;
+$gray-opacity-012: rgba(19, 129, 215, 0.12);
+
+$max-width: 1200px;
+$max-width-over-page: 1440px;
+
+$xsmall-and-up: "screen and (min-width : 480px)";
+$small-and-up: "screen and (min-width : 576px)";
+$tablet-and-up: "screen and (min-width: 768px)";
+$large-and-up: "screen and (min-width : 992px)";
+$ultra-and-up: "screen and (min-width : 1400px)";
+
+$main-font: "Graphik", sans-serif;
+$secondary-font: "Gilroy", sans-serif;
+$quote-font: "Georgia";
+
+$border-radius-lg: 21px;
+$border-radius-sm: 10px;
+
+$font-size-mega: 90px;
+$font-size-v-large: 72px;
+$font-size-xlarge: 64px;
+$font-size-sx-large: 52px;
+$font-size-large: 46px;
+$font-size-s-large: 40px;
+$font-size-big: 36px;
+$font-size-xmedium: 34px;
+$font-size-medium: 32px;
+$font-size-xregular: 28px;
+$font-size-regular: 24px;
+$font-size-normal: 22px;
+$font-size-normal-xlg: 20px;
+$font-size-normal-lg: 18px;
+$font-size-normal-md: 16px;
+$font-size-normal-sm: 14px;
+$font-size-small: 12px;
+
+$font-weight-mega: 900;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-semibold-lighter: 500;
+$font-weight-normal: 400;
+$font-weight-thin: 300;
+
+$line-height-mega: 1.5;
+$line-height-large-mega: 1.44;
+$line-height-large: 1.3;
+$line-height-large-medium: 1.25;
+$line-height-big: 1.2;
+$line-height-medium: 1.18;
+$line-height: 1.15;
+$line-height-small: 1.1;
+
+$letter-spacing: -1.5px;
+$letter-spacing-small: -1px;
+$letter-spacing-xsmall: -0.5px;
+$letter-spacing-tiny: -0.25px;
+
+$letter-spacing-wide: 2px;
+$letter-spacing-wider: 3px;
+
+// box shadows
+$box-shadow-primary: 0 2px 48px 0 rgba(19, 129, 215, 0.13);
+$box-shadow-secondary: 0 2px 48px 0 rgba(19, 129, 215, 0.13), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+
+/* gradients */
+$gradient-primary: radial-gradient(circle at 103% 92%, #004e66, rgba(0, 78, 102, 0) 26%),
+  radial-gradient(circle at 0 14%, #1ad6f5, rgba(26, 214, 245, 0) 50%), linear-gradient(to bottom, #1381d7, #1167ab);
+$gradient-secondary: linear-gradient(110deg, #1a4877, #1b0d30 80%, #1b0624 100%);

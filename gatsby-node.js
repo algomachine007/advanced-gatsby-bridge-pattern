@@ -4,6 +4,18 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const CONTENTFUL_PAGE_TEMPLATE = path.resolve("./src/templates/contentful.js")
 const DSG_PAGE_TEMPLATE = path.resolve("./src/templates/using-dsg.js")
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@/components": path.resolve(__dirname, "src/components"),
+        "@": path.resolve(__dirname, "src/assets", "src/components"),
+        "@static": path.resolve(__dirname, "static"),
+      },
+    },
+  })
+}
+
 const createContentfulPages = async ({ createPage, graphql }) => {
   const result = await graphql(`
     query {
