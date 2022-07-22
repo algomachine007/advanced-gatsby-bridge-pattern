@@ -3,7 +3,9 @@
     "import/resolver": {
       "alias": [
         ["@", "./src/components"],
-        ["@", "./src/assets"]
+        ["@", "./src/assets"],
+        ["@", "./src/assets/images"],
+        ["@", "./src/containers"]
       ]
     },
     "react": {
