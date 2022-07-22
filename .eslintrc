@@ -5,6 +5,20 @@
         ["@", "./src/components"],
         ["@", "./src/assets"]
       ]
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": "babel-eslint",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true,
+      "arrowFunctions": true,
+      "modules": true
     }
   }
 }
