@@ -3,6 +3,7 @@
 import { graphql, navigate } from "gatsby"
 import React, { useEffect } from "react"
 import { getContentfulBodySection } from "../base/getContentfulBody"
+import "./../base/styles/main.scss"
 
 const ContentfulPageTemplate = ({ data, pageContext, ...rest }) => {
   return <main>{data && data.page.sections.map(getContentfulBodySection)}</main>

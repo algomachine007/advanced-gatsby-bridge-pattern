@@ -52,3 +52,35 @@
   max-width: none;
   line-height: var(--line-height-loose);
 }
+
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 211px;
+  height: 375px;
+  border: 1px solid gray;
+  margin: 20px;
+  background-color: #8eb814;
+  z-index: 1;
+  position: relative;
+}
+
+.voucha {
+  position: absolute;
+  bottom: -30px;
+  height: 250px;
+  width: 300px;
+  border: 1px solid gray;
+  padding: 20px;
+  overflow: scroll;
+  z-index: 10;
+}
+
+.voucha[data-variant="isLarge"] {
+  right: 5px;
+}

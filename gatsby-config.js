@@ -45,6 +45,20 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-sass`,
+    //   options: {
+    //     implementation: require("node-sass"),
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          includePaths: ["./src/base/styles/main.scss"],
+        },
+      },
+    },
     `gatsby-plugin-image`,
   ],
 }
