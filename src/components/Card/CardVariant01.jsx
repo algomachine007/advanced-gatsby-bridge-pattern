@@ -3,7 +3,7 @@ import Modal from "@/components/Modal/Modal"
 import useModal from "./../../hooks/useModal"
 
 const CardVariant01 = props => {
-  const { isOpen, handleStopPropagation, toggleModal } = useModal()
+  const { isOpen, handleStopPropagation, toggleModal, transitions } = useModal()
   console.log("props", props)
   return (
     <div style={{ border: "2px solid red" }}>
@@ -15,6 +15,7 @@ const CardVariant01 = props => {
         isOpen={isOpen}
         handleStopPropagation={handleStopPropagation}
         toggleModal={toggleModal}
+        transitions={transitions}
       >
         Ich spreche Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Error, nobis cumque, consectetur atque omnis sunt perspiciatis
