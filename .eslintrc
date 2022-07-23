@@ -5,7 +5,8 @@
         ["@", "./src/components"],
         ["@", "./src/assets"],
         ["@", "./src/assets/images"],
-        ["@", "./src/containers"]
+        ["@", "./src/containers"],
+        ["@", "./src/hooks"]
       ]
     },
     "react": {
