@@ -7,16 +7,21 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
-
-  button {
-    color: red;
-  }
 }
 
 .body {
   background-color: white;
   margin: 10% auto;
-  padding: 20px;
   width: 50%;
   border-radius: 5px;
+  position: relative;
+  padding: 50px 10px;
+
+  button {
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 5%;
+    padding: 5px;
+  }
 }
