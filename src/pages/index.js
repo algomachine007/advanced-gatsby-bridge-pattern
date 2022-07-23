@@ -1,7 +1,5 @@
 import * as React from "react"
 
-import Layout from "../components/layout"
-
 import * as styles from "../components/index.module.css"
 
 const cardData = [
@@ -87,21 +85,19 @@ const IndexPage = () => {
     setState(!state)
   }
   return (
-    <Layout>
-      <div className={styles.wrapper}>
-        {cardData.map(({ title, subText }, index) => (
-          <Card
-            index={index}
-            elemRef={elemRef}
-            title={title}
-            subText={subText}
-            hoverMe={() => hoverMe(index)}
-            selectedIndex={selectedIndex}
-            state={state}
-          />
-        ))}
-      </div>
-    </Layout>
+    <div className={styles.wrapper}>
+      {cardData.map(({ title, subText }, index) => (
+        <Card
+          index={index}
+          elemRef={elemRef}
+          title={title}
+          subText={subText}
+          hoverMe={() => hoverMe(index)}
+          selectedIndex={selectedIndex}
+          state={state}
+        />
+      ))}
+    </div>
   )
 }
 
