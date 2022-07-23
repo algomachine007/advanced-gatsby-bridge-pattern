@@ -1,6 +1,7 @@
 import React from "react"
 import Modal from "@/components/Modal/Modal"
 import useModal from "./../../hooks/useModal"
+import Tabs from "@/components/Tabs/Tabs"
 
 const CardVariant01 = props => {
   const { isOpen, handleStopPropagation, toggleModal, transitions } = useModal()
@@ -36,6 +37,8 @@ const CardVariant01 = props => {
         dicta nesciunt iure tenetur tempore maiores. Cum quisquam id
         voluptatibus.
       </Modal>
+
+      <Tabs />
     </div>
   )
 }
