@@ -26,6 +26,9 @@ export const ContentfulPageQuery = graphql`
         ... on ContentfulBlogs {
           ...FragmentBlog
         }
+        ... on ContentfulHero {
+          ...FragmentHero
+        }
       }
     }
   }

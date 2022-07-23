@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: row wrap;
+  // font-family: $secondary-font;
+
+  // color: $primary-color;
+
+  mark {
+    color: rgb(0, 255, 157);
+  }
+}

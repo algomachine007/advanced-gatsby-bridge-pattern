@@ -47,17 +47,14 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-sass`,
-    //   options: {
-    //     implementation: require("node-sass"),
-    //   },
-    // },
+
     {
       resolve: `gatsby-plugin-sass`,
       options: {
+        implementation: require("sass"),
         sassOptions: {
           includePaths: ["./src/base/styles/main.scss"],
+          additionalData: `@import "${__dirname}/src/base/styles/config/globals";`,
         },
       },
     },
