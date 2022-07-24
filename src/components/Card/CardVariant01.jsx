@@ -1,20 +1,25 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Tabs from "@/components/Tabs/Tabs"
 import Accordion from "../Accordion/Accordion"
 import { information as data } from "./../Accordion/data"
 
 const CardVariant01 = props => {
-  const handleExpanded = expanded => {
-    return !expanded
-  }
+  const [activeIndex, setActiveIndex] = useState(null)
+  const onExpand = evt => setActiveIndex(evt.target.dataset.index)
+
   return (
     <div style={{ border: "2px solid red" }}>
       <div style={{ border: "2px solid red", padding: 50 }}>
         {data.map(({ header, note }, idx) => {
           return (
-            <Accordion shouldExpand={true} onExpand={handleExpanded} key={idx}>
-              <Accordion.Header>{header}</Accordion.Header>
+            <Accordion
+              //the "+" converts the activeIndex to a number
+              shouldExpand={idx === +activeIndex}
+              onExpand={onExpand}
+              key={idx}
+            >
+              <Accordion.Header data-index={idx}>{header}</Accordion.Header>
               <Accordion.Icon />
               <Accordion.Body>
                 <img

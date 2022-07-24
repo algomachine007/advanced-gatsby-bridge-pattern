@@ -43,10 +43,11 @@ const Accordion = ({
   const componentJustMounted = useRef(true)
 
   useEffect(() => {
+    // run only when component is controlled.
     if (!componentJustMounted.current && !isExternalControlled) {
       onExpand(expanded)
+      componentJustMounted.current = false
     }
-    componentJustMounted.current = false
   }, [expanded])
 
   const value = useMemo(
