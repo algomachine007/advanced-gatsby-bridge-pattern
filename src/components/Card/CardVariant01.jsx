@@ -3,10 +3,15 @@ import React, { useState } from "react"
 import Tabs from "@/components/Tabs/Tabs"
 import Accordion from "../Accordion/Accordion"
 import { information as data } from "./../Accordion/data"
+import useExpanded from "../Accordion/hooks/useExpanded"
 
 const CardVariant01 = props => {
   const [activeIndex, setActiveIndex] = useState(null)
-  const onExpand = evt => setActiveIndex(evt.target.dataset.index)
+  const onExpand = evt => {
+    setActiveIndex(evt.target.dataset.index)
+  }
+
+  const { expanded, toggle } = useExpanded()
 
   return (
     <div style={{ border: "2px solid red" }}>

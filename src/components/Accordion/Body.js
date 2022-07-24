@@ -10,29 +10,28 @@ const Body = ({ children, className, ...rest }) => {
 
   const bodyRef = useRef(null)
 
-  console.log("body", bodyRef.current?.scrollHeight)
+  // alternative way
+  // const renderComponent = () => {
+  //   switch (expanded) {
+  //     case true:
+  //       return (
+  //         <div
+  //           ref={bodyRef}
+  //           className={combinedClassNames}
+  //           {...rest}
+  //           aria-expanded={`${expanded ? "true" : ""} `}
+  //         >
+  //           {expanded ? children : null}
+  //         </div>
+  //       )
 
-  const renderComponent = () => {
-    switch (expanded) {
-      case true:
-        return (
-          <div
-            ref={bodyRef}
-            className={combinedClassNames}
-            {...rest}
-            aria-expanded={`${expanded ? "true" : ""} `}
-          >
-            {expanded ? children : null}
-          </div>
-        )
+  //     case false:
+  //       return null
 
-      case false:
-        return null
-
-      default:
-        break
-    }
-  }
+  //     default:
+  //       break
+  //   }
+  // }
 
   // return renderComponent()
   return (
