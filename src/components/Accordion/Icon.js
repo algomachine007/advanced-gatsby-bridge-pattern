@@ -1,9 +1,17 @@
-import { useContext } from "react"
+import React, { useContext } from "react"
 import { AccordionContext } from "./Accordion"
-import * as styles from "./Accordion.module.scss"
+import * as styles from "./Icon.module.scss"
 
-const Icon = () => {
+const Icon = ({ className, ...rest }) => {
   const { expanded } = useContext(AccordionContext)
-  return expanded ? "-" : "+"
+  const combinedClassName = [styles.AccordionIcon, className]
+    .filter(Boolean)
+    .join(" ")
+
+  return (
+    <span {...rest} className={combinedClassName}>
+      {expanded ? "-" : "+"}
+    </span>
+  )
 }
 export default Icon

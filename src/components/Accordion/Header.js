@@ -1,12 +1,11 @@
 //Header.js
 import React, { useContext } from "react"
 import { AccordionContext } from "./Accordion"
-import * as styles from "./Accordion.module.scss"
+import * as styles from "./Header.module.scss"
 const Header = ({ children, className = "", ...otherProps }) => {
   const combinedClassName = [styles.AccordionTrigger, className]
     .filter(Boolean)
     .join("")
-  console.log(combinedClassName)
 
   const { toggleExpanded } = useContext(AccordionContext)
 

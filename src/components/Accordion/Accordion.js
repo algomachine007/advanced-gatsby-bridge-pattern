@@ -9,13 +9,18 @@ import React, {
 import Body from "./Body"
 import Header from "./Header"
 import Icon from "./Icon"
+import * as styles from "./Accordion.module.scss"
 
 export const AccordionContext = createContext()
 
 const { Provider } = AccordionContext
 
-const Accordion = ({ children, onExpand }) => {
-  const [expanded, setExpanded] = useState(false)
+const Accordion = ({ children, onExpand, className, ...rest }) => {
+  const combinedClassNames = [styles.Accordion, className]
+    .filter(Boolean)
+    .join(" ")
+
+  const [expanded, setExpanded] = useState(true)
 
   // do not fire on mount
   const componentJustMounted = useRef(true)
@@ -37,7 +42,13 @@ const Accordion = ({ children, onExpand }) => {
     [expanded, toggleExpanded]
   )
 
-  return <Provider value={value}> {children} </Provider>
+  return (
+    <Provider value={value}>
+      <div className={combinedClassNames} {...rest}>
+        {children}
+      </div>
+    </Provider>
+  )
 }
 
 // Remember this is just a personal reference. It's not mandatory
