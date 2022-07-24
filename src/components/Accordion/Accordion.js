@@ -20,9 +20,8 @@ const Accordion = ({ children, onExpand, className, ...rest }) => {
     .filter(Boolean)
     .join(" ")
 
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
 
-  // do not fire on mount
   const componentJustMounted = useRef(true)
   useEffect(() => {
     if (!componentJustMounted.current) {
