@@ -5,13 +5,17 @@ import Button from "../Button/Button"
 import * as styles from "./Hero01.module.scss"
 import Modal from "../Modal/Modal"
 const Hero01 = ({ description, image }) => {
-  const { isOpen, handleStopPropagation, toggleModal, transitions } = useModal()
+  const { handleStopPropagation, toggleModal, transitions } = useModal()
 
   return (
     <div className={styles.wrapper}>
       <div>
         <h3 dangerouslySetInnerHTML={{ __html: description }} />
-        <Button text="Reach out" onClick={toggleModal} />
+        <Button
+          text="Reach out"
+          onClick={toggleModal}
+          style={{ color: "red" }}
+        />
       </div>
 
       <Modal
