@@ -2,4 +2,10 @@
   position: absolute;
   top: 16px;
   right: 10px;
+
+  span > [aria-expanded="true"] {
+    transform: rotate(90deg);
+    color: red;
+    transform: rotateZ(90deg);
+  }
 }

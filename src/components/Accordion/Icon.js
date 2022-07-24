@@ -9,9 +9,13 @@ const Icon = ({ className, ...rest }) => {
     .join(" ")
 
   return (
-    <span {...rest} className={combinedClassName}>
-      {expanded ? "-" : "+"}
-    </span>
+    <div
+      {...rest}
+      className={combinedClassName}
+      aria-expanded={`${expanded ? "true" : ""} `}
+    >
+      {expanded ? <span> "-" </span> : <span> "+" </span>}
+    </div>
   )
 }
 export default Icon

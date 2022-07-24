@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useRef } from "react"
 import { AccordionContext } from "./Accordion"
 import * as styles from "./Body.module.scss"
 const Body = ({ children, className, ...rest }) => {
@@ -8,11 +8,18 @@ const Body = ({ children, className, ...rest }) => {
 
   const { expanded } = useContext(AccordionContext)
 
+  const bodyRef = useRef(null)
+
   const renderComponent = () => {
     switch (expanded) {
       case true:
         return (
-          <div className={combinedClassNames} {...rest}>
+          <div
+            ref={bodyRef}
+            className={combinedClassNames}
+            {...rest}
+            aria-expanded={`${expanded ? "true" : ""} `}
+          >
             {expanded ? children : null}
           </div>
         )
@@ -25,6 +32,16 @@ const Body = ({ children, className, ...rest }) => {
     }
   }
 
-  return renderComponent()
+  // return renderComponent()
+  return (
+    <div
+      ref={bodyRef}
+      className={combinedClassNames}
+      {...rest}
+      aria-expanded={`${expanded ? "true" : ""}`}
+    >
+      {expanded ? children : null}
+    </div>
+  )
 }
 export default Body
