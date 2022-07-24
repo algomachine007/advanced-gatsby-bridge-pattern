@@ -15,20 +15,22 @@ export const AccordionContext = createContext()
 
 const { Provider } = AccordionContext
 
-const Accordion = ({ children, onExpand, className, ...rest }) => {
+const Accordion = ({
+  children,
+  shouldExpand,
+  onExpand,
+  className,
+  ...rest
+}) => {
   const combinedClassNames = [styles.Accordion, className]
     .filter(Boolean)
     .join(" ")
 
   const [expanded, setExpanded] = useState(false)
 
-  const componentJustMounted = useRef(true)
-  useEffect(() => {
-    if (!componentJustMounted.current) {
-      onExpand(expanded)
-    }
-    componentJustMounted.current = false
-  }, [expanded])
+  const isExternalControlled = shouldExpand !== undefined
+
+  const getState = isExternalControlled ? shouldExpand : expanded
 
   const stateUpdater = previous => !previous
 
@@ -36,9 +38,20 @@ const Accordion = ({ children, onExpand, className, ...rest }) => {
     setExpanded(stateUpdater)
   }, [])
 
+  const getToggle = isExternalControlled ? onExpand : toggleExpanded
+
+  const componentJustMounted = useRef(true)
+
+  useEffect(() => {
+    if (!componentJustMounted.current && !isExternalControlled) {
+      onExpand(expanded)
+    }
+    componentJustMounted.current = false
+  }, [expanded])
+
   const value = useMemo(
-    () => ({ expanded, toggleExpanded }),
-    [expanded, toggleExpanded]
+    () => ({ expanded: getState, toggleExpanded: getToggle }),
+    [getState, getToggle]
   )
 
   return (

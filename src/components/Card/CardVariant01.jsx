@@ -2,6 +2,7 @@ import React from "react"
 
 import Tabs from "@/components/Tabs/Tabs"
 import Accordion from "../Accordion/Accordion"
+import { information as data } from "./../Accordion/data"
 
 const CardVariant01 = props => {
   const handleExpanded = expanded => {
@@ -10,13 +11,10 @@ const CardVariant01 = props => {
   return (
     <div style={{ border: "2px solid red" }}>
       <div style={{ border: "2px solid red", padding: 50 }}>
-        {[
-          { title: "title1", content: "content1" },
-          { title: "title2", content: "content2" },
-        ].map(({ title, content }, idx) => {
+        {data.map(({ header, note }, idx) => {
           return (
-            <Accordion onExpand={handleExpanded} key={idx}>
-              <Accordion.Header>{title}</Accordion.Header>
+            <Accordion shouldExpand={true} onExpand={handleExpanded} key={idx}>
+              <Accordion.Header>{header}</Accordion.Header>
               <Accordion.Icon />
               <Accordion.Body>
                 <img
@@ -25,20 +23,7 @@ const CardVariant01 = props => {
                   alt="reintroducing react book cover"
                 />
                 <p style={{ opacity: 0.7 }}>
-                  {content} <br />
-                  <a
-                    href="https://leanpub.com/reintroducing-react"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Go get it now.
-                  </a>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Suscipit explicabo mollitia quo perferendis quis similique
-                    provident architecto quibusdam vel saepe, quisquam non atque
-                    laudantium doloribus possimus eaque aperiam itaque dolorem?
-                  </p>
+                  {note} <br />
                 </p>
               </Accordion.Body>
             </Accordion>

@@ -10,6 +10,8 @@ const Body = ({ children, className, ...rest }) => {
 
   const bodyRef = useRef(null)
 
+  console.log("body", bodyRef.current?.scrollHeight)
+
   const renderComponent = () => {
     switch (expanded) {
       case true:
