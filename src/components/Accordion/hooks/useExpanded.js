@@ -1,18 +1,27 @@
 // useExpanded.js
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useMemo, useRef, useState } from "react"
 
-export default function useExpanded() {
-  const [expanded, setExpanded] = useState(false)
+export default function useExpanded(initialExpanded = false) {
+  const [expanded, setExpanded] = useState(initialExpanded)
+
   const toggle = useCallback(
     () => setExpanded(prevExpanded => !prevExpanded),
     []
   )
 
-  //partial application
+  const resetRef = useRef(0)
+
+  const reset = useCallback(() => {
+    // perform actual reset
+    setExpanded(initialExpanded)
+    // increase reset count - call this resetRef
+    ++resetRef.current
+  }, [initialExpanded])
+
+  //partial application:  this calls 2 functions at once
   const callFunctionsInSequence =
     (...fns) =>
     (...args) => {
-      console.log("args", ...args)
       return fns.forEach(fn => fn && fn(...args))
     }
 
@@ -28,8 +37,8 @@ export default function useExpanded() {
   )
 
   const value = useMemo(
-    () => ({ getTogglerProps, expanded, toggle }),
-    [expanded, toggle, getTogglerProps]
+    () => ({ getTogglerProps, expanded, toggle, resetDep: resetRef, reset }),
+    [expanded, toggle, getTogglerProps, resetDep, reset]
   )
 
   return value

@@ -5,6 +5,7 @@ import Accordion from "../Accordion/Accordion"
 import { information as data } from "./../Accordion/data"
 import useExpanded from "../Accordion/hooks/useExpanded"
 import useEffectAfterMount from "../Accordion/hooks/useEffectAfterMount"
+import Header from "../Accordion/Header"
 
 const CardVariant01 = props => {
   const [activeIndex, setActiveIndex] = useState(null)
@@ -12,15 +13,14 @@ const CardVariant01 = props => {
     setActiveIndex(evt.target.dataset.index)
   }
 
-  const { expanded, toggle, getTogglerProps } = useExpanded()
-
-  // useEffectAfterMount(() => {
-  //   // user can perform any side effect here 👇
-  //   console.log("Yay! button was clicked!!")
-  // }, [expanded])
+  const { expanded, toggle, getTogglerProps, resetDep, reset } =
+    useExpanded(false)
+  useEffectAfterMount(() => {
+    console.log("reset was invoked!!!!")
+  }, [resetDep])
 
   const customClickHandler = () => {
-    console.log("custom click handler!!!!!")
+    return toggle()
   }
 
   return (
@@ -38,14 +38,8 @@ const CardVariant01 = props => {
               </Accordion.Header>
               <Accordion.Icon expanded={expanded} />
               <Accordion.Body expanded={expanded}>
-                <img
-                  src="/api/collection/10370001/4597752283529216/page/5195905143668736/image/4691607934730240"
-                  style={{ width: "250px" }}
-                  alt="reintroducing react book cover"
-                />
-                <p style={{ opacity: 0.7 }}>
-                  {note} <br />
-                </p>
+                {note} <br />
+                {note.length > 400 && <button onClick={reset}>Reset</button>}
               </Accordion.Body>
             </Accordion>
           )
@@ -62,8 +56,19 @@ const CardVariant01 = props => {
             onClick: customClickHandler,
           })}
         >
-          {expanded ? "Expand" : "Collapse"}
+          {expanded
+            ? "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo repellat minima quam ab ipsam, nostrum sed enim reprehenderit fuga reiciendis, numquam porro cum perferendis modi saepe consequuntur, sapiente repudiandae aut."
+                .length > 50 && <button onClick={reset}>Reset</button>
+            : "Collapse"}
         </button>
+      </div>
+
+      <div>
+        Demo
+        <Accordion>
+          <Body />
+          <Header />
+        </Accordion>
       </div>
     </div>
   )
