@@ -6,6 +6,7 @@ import { information as data } from "./../Accordion/data"
 import useExpanded from "../Accordion/hooks/useExpanded"
 import useEffectAfterMount from "../Accordion/hooks/useEffectAfterMount"
 import Header from "../Accordion/Header"
+import Body from "../Accordion/Body"
 
 const CardVariant01 = props => {
   const [activeIndex, setActiveIndex] = useState(null)
@@ -20,8 +21,39 @@ const CardVariant01 = props => {
   }, [resetDep])
 
   const customClickHandler = () => {
-    return toggle()
+    return toggle
   }
+
+  ///////////
+
+  // const hasViewedSecret = useRef(false)
+  // const { expanded, toggle, override, reset, resetDep } = useExpanded(
+  //   false,
+  //   appReducer
+  // )
+  // const initialState = {
+  //   expanded: initialExpanded,
+  // }
+  // function appReducer(initialState, action) {
+  //   if (
+  //     hasViewedSecret.current &&
+  //     action.type === useExpanded.types.toggleExpand
+  //   ) {
+  //     return {
+  //       ...action.internalChanges,
+  //       // override internal update
+  //       expanded: false,
+  //     }
+  //   }
+  //   return action.internalChanges
+  // }
+
+  // useEffectAfterMount(() => {
+  //   // open secret in new tab ð
+  //   window.open("https://leanpub.com/reintroducing-react", "_blank")
+  //   hasViewedSecret.current = true
+  //   // perform side effect here ð e.g persist user details to database
+  // }, [resetDep])
 
   return (
     <div style={{ border: "2px solid red" }}>
@@ -49,25 +81,23 @@ const CardVariant01 = props => {
       <Tabs />
 
       <div>
-        <button
+        <Accordion
           {...getTogglerProps({
             id: "my-button-id",
             "aria-label": "custom-toggler",
             onClick: customClickHandler,
           })}
+          style={{ margin: 40 }}
         >
-          {expanded
-            ? "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo repellat minima quam ab ipsam, nostrum sed enim reprehenderit fuga reiciendis, numquam porro cum perferendis modi saepe consequuntur, sapiente repudiandae aut."
-                .length > 50 && <button onClick={reset}>Reset</button>
-            : "Collapse"}
-        </button>
-      </div>
-
-      <div>
-        Demo
-        <Accordion>
-          <Body />
-          <Header />
+          <Header style={{ padding: 30 }}>This is a header</Header>
+          <Body>
+            <div style={{ padding: 30 }}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque
+              dolorem quaerat praesentium voluptate, est commodi! Doloremque at
+              maxime rem aspernatur laudantium praesentium, accusamus ab,
+              dignissimos ipsa natus, nostrum quod a.
+            </div>
+          </Body>
         </Accordion>
       </div>
     </div>

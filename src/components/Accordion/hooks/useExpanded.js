@@ -1,11 +1,37 @@
-// useExpanded.js
-import { useCallback, useMemo, useRef, useState } from "react"
+import { useCallback, useMemo, useReducer, useRef } from "react"
 
 export default function useExpanded(initialExpanded = false) {
-  const [expanded, setExpanded] = useState(initialExpanded)
+  const initialState = {
+    expanded: initialExpanded,
+  }
+  useExpanded.types = {
+    toggleExpand: "EXPAND",
+    reset: "RESET",
+  }
+
+  const internalReducer = (state, action) => {
+    switch (action.type) {
+      case useExpanded.types.toggleExpand:
+        return {
+          ...state,
+          expanded: !state.expanded,
+        }
+      case useExpanded.types.reset:
+        return {
+          ...state,
+          expanded: action.payload,
+        }
+      default:
+        throw new Error(`Action type ${action.type} not handled`)
+    }
+  }
+
+  // useState approach: const [expanded, setExpanded] = useState(initialExpanded)
+
+  const [{ expanded }, setExpanded] = useReducer(internalReducer, initialState)
 
   const toggle = useCallback(
-    () => setExpanded(prevExpanded => !prevExpanded),
+    () => setExpanded({ type: useExpanded.types.toggleExpand }),
     []
   )
 
@@ -13,7 +39,10 @@ export default function useExpanded(initialExpanded = false) {
 
   const reset = useCallback(() => {
     // perform actual reset
-    setExpanded(initialExpanded)
+    setExpanded({
+      type: useExpanded.types.reset,
+      payload: initialExpanded, // pass a payload "initialExpanded"
+    })
     // increase reset count - call this resetRef
     ++resetRef.current
   }, [initialExpanded])
@@ -37,8 +66,8 @@ export default function useExpanded(initialExpanded = false) {
   )
 
   const value = useMemo(
-    () => ({ getTogglerProps, expanded, toggle, resetDep: resetRef, reset }),
-    [expanded, toggle, getTogglerProps, resetDep, reset]
+    () => ({ getTogglerProps, expanded, toggle, resetRef, reset }),
+    [expanded, toggle, getTogglerProps, resetRef, reset]
   )
 
   return value
