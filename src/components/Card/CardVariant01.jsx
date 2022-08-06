@@ -8,6 +8,8 @@ import useEffectAfterMount from "../Accordion/hooks/useEffectAfterMount"
 import Header from "../Accordion/Header"
 import Body from "../Accordion/Body"
 
+// documentation: shouldExpand means one must be opened at a given time
+
 const CardVariant01 = props => {
   const [activeIndex, setActiveIndex] = useState(null)
   const onExpand = evt => {
@@ -16,6 +18,7 @@ const CardVariant01 = props => {
 
   const { expanded, toggle, getTogglerProps, resetDep, reset } =
     useExpanded(false)
+
   useEffectAfterMount(() => {
     console.log("reset was invoked!!!!")
   }, [resetDep])
@@ -24,44 +27,14 @@ const CardVariant01 = props => {
     return toggle
   }
 
-  ///////////
-
-  // const hasViewedSecret = useRef(false)
-  // const { expanded, toggle, override, reset, resetDep } = useExpanded(
-  //   false,
-  //   appReducer
-  // )
-  // const initialState = {
-  //   expanded: initialExpanded,
-  // }
-  // function appReducer(initialState, action) {
-  //   if (
-  //     hasViewedSecret.current &&
-  //     action.type === useExpanded.types.toggleExpand
-  //   ) {
-  //     return {
-  //       ...action.internalChanges,
-  //       // override internal update
-  //       expanded: false,
-  //     }
-  //   }
-  //   return action.internalChanges
-  // }
-
-  // useEffectAfterMount(() => {
-  //   // open secret in new tab ð
-  //   window.open("https://leanpub.com/reintroducing-react", "_blank")
-  //   hasViewedSecret.current = true
-  //   // perform side effect here ð e.g persist user details to database
-  // }, [resetDep])
-
   return (
     <div style={{ border: "2px solid red" }}>
       <div style={{ border: "2px solid red", padding: 50 }}>
         {data.map(({ header, note }, idx) => {
           return (
             <Accordion
-              shouldExpand={idx === +activeIndex} //the "+" converts the activeIndex to a number
+              shouldExpand={idx === +activeIndex}
+              //the "+" converts the activeIndex to a number
               onExpand={onExpand}
               key={idx}
             >
@@ -82,6 +55,7 @@ const CardVariant01 = props => {
 
       <div>
         <Accordion
+          //props getter pattern
           {...getTogglerProps({
             id: "my-button-id",
             "aria-label": "custom-toggler",

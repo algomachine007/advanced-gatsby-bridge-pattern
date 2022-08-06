@@ -1,0 +1,12 @@
+{
+  "presets": ["@babel/react", "@babel/env"],
+  "plugins": ["@babel/plugin-proposal-class-properties"],
+  "env": {
+    "start": {
+      "presets": ["react-hmre"]
+    },
+    "test": {
+      "presets": ["es2015", "react", "stage-0"]
+    }
+  }
+}

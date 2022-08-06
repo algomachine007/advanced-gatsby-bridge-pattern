@@ -31,5 +31,8 @@ export const query = graphql`
     }
     title
     variant
+    body {
+      raw
+    }
   }
 `

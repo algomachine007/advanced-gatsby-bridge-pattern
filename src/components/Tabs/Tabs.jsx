@@ -7,7 +7,10 @@ const Tabs = () => {
   const [index, setIndex] = useState(0)
 
   const handleIndex = idx => {
-    setIndex(idx)
+    if (idx) {
+      setIndex(idx)
+    }
+    return null
   }
 
   return (
