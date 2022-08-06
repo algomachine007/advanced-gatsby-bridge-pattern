@@ -6,7 +6,7 @@ import Layout from "../components/containers/Layout"
 import { getContentfulBodySection } from "../base/getContentfulBody"
 import "./../base/styles/main.scss"
 
-const ContentfulPageTemplate = ({ data, pageContext, ...rest }) => {
+const ContentfulPageTemplate = ({ data, pageContext }) => {
   return (
     <Layout>{data && data.page.sections.map(getContentfulBodySection)}</Layout>
   )
