@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
+const siteTitle = "Display Active Users Account Details"
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -23,7 +24,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <h1>{siteTitle}</h1>
         </Link>
       </h1>
     </div>

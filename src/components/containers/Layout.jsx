@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "../Header/header"
 import * as styles from "./Layout.module.scss"
 
 const Layout = ({ children }) => {
@@ -9,6 +10,7 @@ const Layout = ({ children }) => {
   ) {
     return (
       <div className={styles.layout}>
+        <Header />
         {React.Children.map(children, child => {
           return React.isValidElement(child) && React.cloneElement(child)
         })}
