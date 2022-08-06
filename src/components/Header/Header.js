@@ -1,8 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-const siteTitle = "Display Active Users Account Details"
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, user }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -16,7 +15,7 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      {/* <h1 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
@@ -24,9 +23,15 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          <h1>{siteTitle}</h1>
+          <h1>{siteTitle} </h1>
+
+          <h4>{user.username}</h4>
         </Link>
-      </h1>
+      </h1> */}
+
+      <h1>{siteTitle}</h1>
+
+      <h4>{user.username}</h4>
     </div>
   </header>
 )

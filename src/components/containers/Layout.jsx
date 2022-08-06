@@ -10,7 +10,14 @@ const Layout = ({ children }) => {
   ) {
     return (
       <div className={styles.layout}>
-        <Header />
+        <Header
+          siteTitle="Hello"
+          user={{
+            name: "Benneth Uzochukwu",
+            email: "uzochukwubenamara@gmail.com",
+            username: "algomachine007",
+          }}
+        />
         {React.Children.map(children, child => {
           return React.isValidElement(child) && React.cloneElement(child)
         })}
