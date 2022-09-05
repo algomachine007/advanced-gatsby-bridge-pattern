@@ -1,4 +1,5 @@
 import * as React from "react"
+import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 const Header = ({ siteTitle, user }) => (
@@ -37,3 +38,21 @@ const Header = ({ siteTitle, user }) => (
 )
 
 export default Header
+
+Header.defaultProps = {
+  siteTitle: ``,
+  user: {
+    name: "",
+    email: "",
+    username: "",
+  },
+}
+
+Header.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+}

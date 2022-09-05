@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogCard renders correctly with appropriate props 1`] = `
+<mockConstructor
+  className="blogCard"
+  to="//page"
+>
+  <div
+    className="image"
+  >
+    <ContentfulImage
+      className="imageHeight"
+      image="image.jpg"
+      productScreenVideoPlayButtonImage={null}
+      productScreenYouTubeVideoId={null}
+    />
+  </div>
+  <div
+    className="content"
+  >
+    <time>
+      Aug 1, 2022
+    </time>
+    <h2>
+      B2B payments a reality with Real-Time...
+    </h2>
+  </div>
+</mockConstructor>
+`;

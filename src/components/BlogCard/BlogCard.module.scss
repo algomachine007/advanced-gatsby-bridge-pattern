@@ -1,0 +1,76 @@
+.blogCard {
+  display: flex;
+  position: relative;
+  min-height: 300px;
+  transition: all 0.3s ease-in-out;
+  min-width: 100%;
+
+  &:hover {
+    transform: translate(0, -10px);
+    cursor: pointer;
+    .content {
+      background-color: $color-primary-dark;
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet--sm) {
+    min-width: 100%;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    min-width: 45%;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    min-width: 580px;
+    min-height: 585px;
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0;
+    height: calc(100% / 2.2);
+    min-width: 100%;
+    background-color: $color-primary-dark;
+    padding: 20px;
+    color: $color-standard-white;
+    opacity: 0.8;
+
+    @media (min-width: $breakpoint-desktop) {
+      height: calc(100% / 3.5);
+      padding: 40px 24px;
+    }
+
+    time {
+      font-size: 12px;
+      font-weight: $font--bold;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: $font--20;
+      font-weight: $font--bold;
+      letter-spacing: -1px;
+      line-height: $line-height--wiggle;
+
+      @media (min-width: $breakpoint-desktop) {
+        font-size: $font--30;
+        line-height: $line-height--wiggle;
+      }
+    }
+  }
+}
+
+.image {
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    object-fit: cover;
+  }
+}
+
+.imageHeight {
+  height: 100%;
+}
