@@ -1,6 +1,6 @@
-const contentful = require("contentful-management")
-const fs = require("fs")
-
+import fs from "fs"
+import contentful from "contentful-management"
+import { faker } from "@faker-js/faker"
 // const { GATSBY_MANAGEMENT_TOKEN, GATSBY_ACCESS_TOKEN, GATSBY_SPACE_ID } =
 //   process.env
 
@@ -15,124 +15,95 @@ const client = contentful.createClient({
   accessToken: "Qz7WrxWP3mSOtBp3PwbOxdMzhLP2gaumLB-K-UxnE74",
 })
 
-// updating description of a contentType or model i.e person
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(environment => environment.getContentType("person"))
-//   .then(model => {
-//     model.description = "This has been updated via migration again"
-//     return model.update()
-//   })
-//   .then(data => console.log(`${data.sys.id} updated`))
-//   .catch(console.error)
+async function createEntryWithAsset() {
+  try {
+    const space = await client.getSpace("jeqa1wtiqf6k")
+    const environment = await space.getEnvironment("master")
 
-// Create content type
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(environment =>
-//     environment.createContentTypeWithId("test", {
-//       name: "Test Blog Post",
-//       fields: [
-//         {
-//           id: "title",
-//           name: "Title",
-//           required: true,
-//           localized: false,
-//           type: "Text",
-//         },
-//         {
-//           id: "body",
-//           name: "Body",
-//           required: false,
-//           localized: false,
-//           type: "RichText",
-//         },
-//       ],
-//     })
-//   )
-//   .then(res => console.log(`${res} created`))
-//   .catch(console.error) // RichText
+    /**
+     * Entry creation and publish
+     */
+    // let entry = await environment.createEntry("blogPostTest", {
+    //   fields: {
+    //     id: {
+    //       "en-US": faker.datatype.number(4).toString(),
+    //     },
+    //     title: {
+    //       "en-US": "Title",
+    //     },
+    //     images: {
+    //       "en-US": [],
+    //     },
+    //     id: "body",
+    //     name: "Body",
+    //     required: false,
+    //     localized: false,
+    //     type: "RichText",
+    //   },
+    // })
 
-//Create content entry
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(env =>
-//     env.createEntryWithId("test", "body", {
-//       fields: {
-//         title: {
-//           "en-US": "Title",
-//         },
-//       },
-//     })
-//   )
-//   .then(info => info)
-//   .catch(console.error)
+    let entry = await environment.createContentTypeWithId("blogPostTest", {
+      name: "Blog Post Test",
+      description: "A test blog post",
+      fields: [
+        {
+          id: "title",
+          name: "Title",
+          required: true,
+          localized: false,
+          type: "Text",
+        },
+        {
+          id: "body",
+          name: "Body",
+          required: false,
+          localized: false,
+          type: "RichText",
+        },
+      ],
+    })
+    // reassign `entry` to have the latest version number
+    entry = await entry.publish()
 
-// Update entry
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(environment => environment.getEntry("body"))
-//   .then(entry => {
-//     entry.fields.title["en-US"] = "Amaben Richtext"
-//     return entry.update()
-//   })
-//   .then(entry => console.log(`Entry ${entry.sys.id} updated.`))
-//   .catch(console.error)
+    /**
+     * Asset creation and publish
+     */
+    // let asset = await environment.createAssetWithId(
+    //   faker.datatype.number(4).toString(),
+    //   {
+    //     fields: {
+    //       title: {
+    //         "en-US": "Title",
+    //       },
+    //       file: {
+    //         "en-US": {
+    //           contentType: "image/jpeg",
+    //           fileName: "amaben" + ".jpeg",
+    //           upload: "uploadHref",
+    //         },
+    //       },
+    //     },
+    //   }
+    // )
+    // // reassign `asset` to have the latest version number
+    // asset = await asset.processForAllLocales()
+    // asset = await asset.publish()
 
-// client.getSpace("jeqa1wtiqf6k")
-//Basic entries filter
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(environment => environment.getEntries())
-//   .then(function (entries) {
-//     // log the title for all the entries that have it
-//     entries.items.forEach(function (entry) {
-//       // more like filtering, hmmmm...
-//       if (entry.fields) {
-//         return entry.publish()
-//       }
-//     })
-//   })
+    // /**
+    //  * Update entry with new asset
+    //  */
+    // entry.fields["images"]["en-US"] = {
+    //   sys: {
+    //     id: asset.sys.id,
+    //     linkType: "Asset",
+    //     type: "Link",
+    //   },
+    // }
+    // entry = await entry.update()
+    // entry = await entry.publish()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
 
-client
-  .getSpace("jeqa1wtiqf6k")
-  .then(space => space.getEnvironment("master"))
-  .then(environment => environment.getEntry("body"))
-  .then(entry => {
-    if (entry) {
-      console.log(entry.fields)
-    }
-  })
-  .catch(e => console.log(e))
-
-// 2. Filtration method 2, update
-
-// client
-//   .getSpace("jeqa1wtiqf6k")
-//   .then(space => space.getEnvironment("master"))
-//   .then(environment =>
-//     environment.getEntries({
-//       // "fields.name": "Amaben Richtext",
-//       content_type: "test",
-//     })
-//   )
-//   .then(function (entries) {
-//     // log the title for all the entries that have it
-//     entries.items.forEach(function (entry) {
-//       // more like filtering, hmmmm...
-//       if (entry.fields) {
-//         const data = stagingContent
-//         data.forEach(d => {
-//           entry.fields.title = "nnnn"
-//           entry.fields.body["en-US"] = d
-//           return entry.update()
-//         })
-//       }
-//     })
-//   })
-//   .catch(error => console.error(error))
+createEntryWithAsset()
